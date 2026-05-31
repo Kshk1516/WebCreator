@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт для создания сайтов</title>
+    <link rel="stylesheet" href="css">
+</head>
+<body>
+        <header>
+            <b style="margin-left: 20px; text-shadow: 0px 0px 5px red;"><h1>WebCreator</h1></b>
+            <div class="header_buttons">
+                <button id = "login">Вход</button>
+                <button id = "registr">Регистрация</button>
+            </div>
+            
+        </header>
+        <main>
+            <div class = "container">
+                <div class="cool_text">
+                    Создайте свой сайт сейчас без проги!!!
+                </div>
+                <button id = "registr2">НАЧАТЬ</button>
+                <input type = "text" id = "test_input">
+                <button id = test_button>Отправить</button>
+                <div id = "test_answer"></div>
+            </div>
+            <div class = "container2">
+                <h1 style="color: aliceblue;">Как это работает:</h1>
+                <ul style = "color: aliceblue;" style="margin-right: 50px;">
+                    <li>
+                        Выберите шаблон
+                    </li>
+                    <li>
+                        Выберите цвета
+                    </li>
+                    <li>
+                        Выберите дизайн
+                    </li>
+                    <li>
+                        Получите ваш сайт
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <div class="BIG_shadow"></div>
+        <div class = "logWindow">
+            <div class = "modal">
+                <h2>Вход</h2>
+                <p>почта или логин</p>
+                <input type = "text" id = "log_email_enter">
+                <p>Пароль</p>
+                <input type = "password" id = "password_enter">
+                <button id = "enter">Подтвердить</button>
+                <div id = "log_massage"></div>
+            </div>
+        </div>
+        <div class = "regWindow">
+            <div class = "modal">
+                <h2>Регистрация</h2>
+                <p >Email</p>
+                <input type = "email"  id = "email_value">
+                <p >логин</p>
+                <input type = "text" id = "login_value">
+                <p>Пароль</p>
+                <input type = "password" id = "password">
+                <p>Повторите пароль</p>
+                <input type = "password" id = "second_password_value">
+                <button id = "podtverdit">Подтвердить</button>
+                <div id = "reg_massage"></div>
+            </div>
+        </div>
+        <footer>
+            <a href="https://code.visualstudio.com">Свяжитесь c нами</a>
+            
+        </footer>
+<script>
+    document.getElementById("login").addEventListener("click", function(){
+        openwindow(".logWindow");
+    })
+    document.getElementById("registr").addEventListener("click", function(){
+        openwindow(".regWindow");
+    })
+    document.getElementById("registr2").addEventListener("click", function(){
+        openwindow(".regWindow");
+    })
+    document.querySelector(".BIG_shadow").addEventListener("click", function(){
+        closewindow()
+    })
+    function openwindow(classs){
+        document.querySelector(classs).classList.add('active');
+        document.querySelector(".BIG_shadow").classList.add('active');
+    }
+    function closewindow(){
+        document.querySelector(".BIG_shadow").classList.remove('active');
+        document.querySelector(".regWindow").classList.remove('active');
+        document.querySelector(".logWindow").classList.remove('active');
+    }
+    document.getElementById("podtverdit").addEventListener("click", function(){
+    const emailC = document.getElementById("email_value").value;
+    const loginC = document.getElementById("login_value").value;
+    const password1 = document.getElementById("password").value;
+    const password2 = document.getElementById("second_password_value").value;
+    if (emailC == '' || loginC == '' || password1 == '' || password2 == ''){
+        reg_massage_func('заполните все поля', 'red')
+    }
+    if (password1 != password2){
+        reg_massage_func('пароли не совпадают', 'red')
+    }
+    else{
+		const sendData = new URLSearchParams();
+        sendData.append('email', emailC);
+        sendData.append('login', loginC);
+        sendData.append('password', password1);
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sendData
+        })
+		.then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                reg_massage_func(data.message, 'green');
+            } else {
+                reg_massage_func(data.message, 'red');
+            }
+        })
+        .catch(error => {
+            reg_massage_func('Ошибка соединения с сервером', 'red');
+        });
+    }
+})
+    document.getElementById("enter").addEventListener('click', function(){
+        const password_enter = document.getElementById('password_enter').value
+        const log_em_enter = document.getElementById("log_email_enter").value
+        if (password_enter == '' || log_em_enter == ''){
+            log_massage_func('заполните все поля', 'red')
+        }
+    else{
+		const sendData = new URLSearchParams();
+        sendData.append('login', log_em_enter);
+        sendData.append('password', password_enter);
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sendData
+        })
+		.then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                log_massage_func(data.message, 'green');
+                if (data.redirect) {
+                    setTimeout(() => {
+                        window.location.href = data.redirect;
+                    }, 1000);
+            	}
+            } else {
+                log_massage_func(data.message, 'red');
+            }
+        })
+        .catch(error => {
+            log_massage_func('Ошибка соединения с сервером', 'red');
+        });
+    }
+})
+document.getElementById("test_button").addEventListener('click', function(){
+    const test_answer = document.getElementById("test_answer")
+    const test_text = document.getElementById("test_input").value
+    console.log(test_text);
+    const sendData = new URLSearchParams();
+    sendData.append('promt', test_text);
+    sendData.append('хуйня', "хуйня полная");
+    fetch('/generate',{
+       method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sendData  
+    })
+    .then(otvet => otvet.json())
+
+    .then(data => {
+        	console.log(data);
+            if (data.Uspeh) {
+				test_answer.textContent = data.Otvet_ot_ii;
+            } else {
+				test_answer.textContent = "Что-то пошло не так...";
+            }
+        })
+})
+function reg_massage_func(massage, type_color){
+const reg_massage = document.getElementById("reg_massage");
+reg_massage.textContent = massage;
+reg_massage.style.color = type_color;
+setTimeout(clear, 4000, reg_massage)
+}
+function log_massage_func(massage, type_color){
+const log_massage = document.getElementById("log_massage");
+log_massage.textContent = massage;
+log_massage.style.color = type_color;
+setTimeout(clear, 4000, log_massage)
+}
+function clear(element){element.textContent = '';}
+</script>
+</body>
+</html>

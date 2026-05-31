@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт-визитка</title>
+    <link rel="stylesheet" href="css">
+</head>
+<body>
+        <header>
+            <b style="margin-left: 20px; text-shadow: 0px 0px 5px red;"><h1>WebCreator</h1></b>
+            <div class="header_buttons">
+                <button id = 'exit'>Выход</button>
+            </div>
+            
+        </header>
+        <main>
+            <div id = "container-main1" class = "container-main">
+                <div class="cool_text">
+                    Начните прямо сейчас 
+                </div>
+                <button id = "start_button">
+                    Начать
+                </button>
+            </div>
+            <div id = "container-main2" class = "container-main">
+                <h1>Ваши сайты:</h1>
+                <ul style="margin-right: 50px;">
+                    <li>
+                       Сайт1
+                    </li>
+                    <li>
+                        Сайт2
+                    <li>
+                        Сайт3
+                    </li>
+                    <li>
+                        Сайт4
+                    </li>
+                </ul>
+            </div>
+            <div style = "display: none;" class = "container">
+                <div class="cool_text" id = "site_name">
+                    Введите название сайта:
+                </div>
+                <input type="text" maxlength="15" id="name_input">
+                <div id = "attentionCont1"></div>
+                <div style="display: flex;">
+                    <button id = 'back'>
+                        Назад
+                    </button>
+                    <button id = "name_button">
+                        Далее
+                    </button>
+                </div>
+            </div>
+            <div style = "display: none;" class = "container2">
+                <h1 style="color: aliceblue;">Выберите стиль:</h1>
+                <select id = "style_Selector">
+                    
+                    <option value = "">
+                        Выберите вариант
+                    </option>
+                    <option value="Минимализм"> 
+                        Минимализм
+                    </option>
+                      <option value="Строгий">
+                        Строгий
+                    </option>
+                      <option value="Хихихиха">
+                        Забавни
+                    </option>
+                </select>
+                <div id = "attentionCont2"></div>
+
+                <div style="display: flex;">
+                    <button id = 'back1'>
+                        Назад
+                    </button>
+                    <button id = 'styleButton'>
+                        Далее
+                    </button>
+                </div>
+            </div>
+            <div class="BIG_shadow"></div>
+            <div class = "exitwindow">
+                <div class = "modal">
+                    <h2 style = "color: rgb(255, 255, 255); text-align: center;">Вы действительно хотите выйти?</h2>
+                    <button id = "true_exit" style="color: rgb(255, 255, 255);">Выйти</button>
+                </div>
+            </div>
+            <div class = "container3">
+                <h1>Выберите цвет</h1>
+
+                <h2>Основной цвет:</h2>
+                <input id = "mainColor" type="color" style = "width: 60px; height: 60px; margin: 0; border: 1px;">
+                <h2>Второй цвет:</h2>
+                <input id = "SecondColor" type="color" style = "width: 60px; height: 60px; margin: 0; border: 1px;">
+                <h2>Третий цвет:</h2>
+                <input id = "ThirdColor" type="color" style = "width: 60px; height: 60px; margin: 0; border: 1px;">
+
+                <div style="display: flex;">
+                    <button id = 'back2'>
+                        Назад
+                    </button>
+                    <button id = 'colorButton'>
+                        Далее
+                    </button>
+                </div>
+            </div>
+            <div class = "container4">
+                <h1>Выбранные параметры:</h1> <!-- Заголовок -->
+                Название сайта: <!-- Просто текст -->
+                <div id = "name"></div> <!-- Я дал id = name диву, сюда мы будем вставлять название сайта, которое ввел пользователь -->
+                Стиль сайта: <!-- Просто текст -->
+                <div id = "style"></div> <!-- Тут будет стиль, поэтому id у него style -->
+                Основной цвет сайта: <!-- Просто текст -->
+                <div id = "color1"></div> <!-- Тут будет первый цвет, поэтому id у него color1 -->
+                Второй цвет сайта: <!-- Просто текст -->
+                <div id = "color2"></div> <!-- Тут будет втоорой цвет, поэтому id у него color2 -->
+                Третий цвет сайта: <!-- Просто текст -->
+                <div id = "color3"></div> <!-- Тут будет третий цвет, поэтому id у него color3 -->
+
+                <div style="display: flex;"> <!-- Контейнер для кнопок -->
+                    <button id = 'back3'> <!-- Добавил кнопку назад в 4 кнотейнере и дал ей id = back3(добавил обработку перелистывания контейнера смотри скрипт ниже) -->
+                        Назад
+                    </button>
+                    <button id = 'SendButton'> <!-- Добавил кнопку подтвердить в 4 кнотейнере и дал ей id = SendButton -->
+                        Подтвердить
+                    </button>
+                </div>
+                <div id = 'FinalMassage' style = "color: green;"></div>
+            </div>
+            <div class = "container5">
+                <h1>Ваш сайт готов</h1>
+                <div id = "test_generate"></div>
+                <a id = 'web_link'>Ссылка на ваш сайт</a>
+            </div>
+        </main>
+        <footer>
+            <a href="https://code.visualstudio.com">Свяжитесь c нами</a>
+            
+        </footer>
+        <script>
+            document.getElementById("start_button").addEventListener("click", function(){
+                const container_main1 = document.getElementById("container-main1");
+                const container_main2 = document.getElementById("container-main2");
+                const container = document.querySelector(".container");
+                container_main1.style.display = 'none';
+                container_main2.style.display = 'none';
+                container.style.display = 'flex';
+            })
+            document.getElementById("name_button").addEventListener("click", function(){
+                const nameInput = document.getElementById("name_input");
+                const container1 = document.querySelector(".container");
+                const container2 = document.querySelector(".container2");
+                if (nameInput.value != ''){
+                    container1.style.display = 'none';
+                    container2.style.display = 'flex';
+                }
+                else{
+                    NoCorrect("attentionCont1", 'Введите название');
+                }
+            })
+			document.getElementById("back").addEventListener("click", function(){
+                const container_main1 = document.getElementById("container-main1");
+                const container_main2 = document.getElementById("container-main2");
+                const container = document.querySelector(".container");
+                container_main1.style.display = 'flex';
+                container_main2.style.display = 'flex';
+                container.style.display = 'none';
+            })
+            document.getElementById("back1").addEventListener("click", function(){
+                const container1 = document.querySelector(".container");
+                const container2 = document.querySelector(".container2");
+                container2.style.display = 'none';
+                container1.style.display = 'flex';
+            })
+            document.getElementById("styleButton").addEventListener("click", function(){
+                const container2 = document.querySelector(".container2");
+                const container3 = document.querySelector(".container3");
+                const dropDown = document.getElementById('style_Selector');
+                if (dropDown.value != ''){
+                    container2.style.display = 'none';
+                    container3.style.display = 'flex';    
+                }
+                else{
+                    NoCorrect("attentionCont2", "Выберите стиль");
+                }
+               
+            })
+            document.getElementById("back2").addEventListener("click", function(){
+                const container2 = document.querySelector(".container2");
+                const container3 = document.querySelector(".container3");
+                container3.style.display = 'none';
+                container2.style.display = 'flex';
+            })
+            document.getElementById("back3").addEventListener("click", function(){ // Перелистка с контейнера 4 на контейнер 3
+                const container3 = document.querySelector(".container3");
+                const container4 = document.querySelector(".container4");
+                container4.style.display = 'none';
+                container3.style.display = 'flex';
+            })
+            document.getElementById("colorButton").addEventListener("click", function(){
+                const container3 = document.querySelector(".container3");
+                const container4 = document.querySelector(".container4");
+                container3.style.display = 'none';
+                container4.style.display = 'flex';
+                GetAndSetFields();
+            })
+            document.getElementById("SendButton").addEventListener("click", function(){
+                document.getElementById('FinalMassage').textContent = 'Запрос отправлен';
+                setTimeout(clear, 4000, "FinalMassage");
+                const container4 = document.querySelector(".container4");
+                const container5 = document.querySelector(".container5");
+                container4.style.display = 'none';
+                container5.style.display = 'flex';              
+            })
+            function GetAndSetFields(){//Написали что это функция(слово function) и дали ей название(оно может быть любым как и название переменной, тут это GetAndSetFields)
+                //Так как в функцию не приходит никаких переменных, то круглые скобки после её названия пустые. В фигурных скобках заключается весь исполняемый код
+                const nameInput = document.getElementById("name_input"); //получили по id элемент ввода названия сайта и записали в переменную
+                const nameInputValue = nameInput.value.trim(); //Взяли значение, которое ввел пользователь и использовали trim чтобы убрать лишние пробелы
+
+                const dropDown = document.getElementById('style_Selector'); //получили по id элемент выбора стиля сайта и записали в переменную
+                const dropDownValue = dropDown.value; //Взяли значение, которое выбрал пользователь(trim не используем, потому что значения в выпадающем списке сами выставляли)
+
+                const mainColor = document.getElementById("mainColor"); //получили по id элемент выбора первого цвета сайта и записали в переменную
+                const SecondColor = document.getElementById("SecondColor"); //получили по id элемент выбора второго цвета сайта и записали в переменную
+                const ThirdColor = document.getElementById("ThirdColor"); //получили по id элемент выбора третьего цвета сайта и записали в переменную
+                const mainColorValue = mainColor.value; //Взяли значение первого цвета, которое выбрал пользователь
+                const SecondColorValue = SecondColor.value; //Взяли значение второго цвета, которое выбрал пользователь
+                const ThirdColorValue = ThirdColor.value; //Взяли значение третьего цвета, которое выбрал пользователь
+                
+                //САМОЕ ебать интересное это как же мы будем засовывать в дивы наши переменные
+                const nameSpan = document.getElementById('name');//взяли див имени по id
+                nameSpan.textContent = nameInputValue;//использовали textContent, который меняет текст в этом элементе на нужный нам 
+
+                const styleSpan = document.getElementById('style');//взяли див стиля по id
+                styleSpan.textContent = dropDownValue;//использовали textContent, который меняет текст в этом элементе на нужный нам 
+
+                const color1Span = document.getElementById('color1');//взяли див первого цвета по id
+                color1Span.textContent = mainColorValue;//использовали textContent, который меняет текст в этом элементе на нужный нам 
+                
+                const color2Span = document.getElementById('color2');//взяли див второго цвета по id
+                color2Span.textContent = SecondColorValue;
+
+                const color3Span = document.getElementById('color3');//взяли див третьего цвета по id
+                color3Span.textContent = ThirdColorValue;//использовали textContent, который меняет текст в этом элементе на нужный нам 
+             }
+            document.getElementById("colorButton").addEventListener("click", function(){
+                const container3 = document.querySelector(".container3");
+                const container4 = document.querySelector(".container4");
+                container3.style.display = 'none';
+                container4.style.display = 'flex';
+                GetAndSetFields();
+            })
+            function clear(id){
+                document.getElementById(id).textContent = '';
+            }
+            function NoCorrect(id, massage){
+                document.getElementById(id).textContent = massage;
+                setTimeout(clear, 4000, id)
+            }
+            document.getElementById("exit").addEventListener("click", function(){
+                openwindow(".exitwindow");
+            })
+            document.querySelector(".BIG_shadow").addEventListener("click", function(){
+                closewindow()
+            })
+            function openwindow(classs){
+                document.querySelector(classs).classList.add('active');
+                document.querySelector(".BIG_shadow").classList.add('active');
+            }
+            function closewindow(){
+                document.querySelector(".BIG_shadow").classList.remove('active');
+                document.querySelector(".exitwindow").classList.remove('active');
+            }
+            document.getElementById("true_exit").addEventListener('click', function(){
+                window.location.href = '/'
+            })
+document.getElementById("SendButton").addEventListener('click', function(){
+    const test_generate = document.getElementById("test_generate")
+    const site_name = document.getElementById("name_input").value
+    const style = document.getElementById("style_Selector").value
+    const color1 = document.getElementById("mainColor").value
+    const color2 = document.getElementById("SecondColor").value
+    const color3 = document.getElementById("ThirdColor").value
+    const email_send = "user@gmail.com"
+    console.log(site_name);    
+    console.log(style);
+    console.log(color1);
+    console.log(color2);
+    console.log(color3);
+    const sendData = new URLSearchParams();
+    sendData.append('site_name', site_name);
+    sendData.append('style', style);
+    sendData.append('color1', color1);
+    sendData.append('color2', color2);
+    sendData.append('color3', color3);
+    sendData.append('email_send', email_send);
+    fetch('/generate_html', {
+        method: 'POST',
+        	headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: sendData  
+    })
+    .then(otvet => otvet.json())
+
+    .then(data => {
+        	console.log(data);
+            if (data.Uspeh == true) {
+				test_generate.textContent = data.Otvet_ot_ii;
+            } else {
+				test_generate.textContent = "Что-то пошло не так..";
+            }
+        })
+})
+        </script>
+</body>
+</html>

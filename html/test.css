@@ -1,0 +1,435 @@
+/* Основные переменные цветов */
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --accent-color: #ff4757;
+    --accent-hover: #ff6b81;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --card-shadow: 0 8px 32px rgba(255, 71, 87, 0.1);
+    --gradient: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+}
+
+/* Глобальные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    background: var(--primary-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 71, 87, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 71, 87, 0.05) 0%, transparent 20%);
+}
+
+/* Хедер */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 71, 87, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header_buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Кнопки */
+button {
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--accent-color);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+    border-color: transparent;
+}
+
+button:hover::before {
+    left: 0;
+}
+
+/* Основной контент */
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Карточки - ОСНОВНЫЕ ВИДИМЫЕ КОНТЕЙНЕРЫ */
+.container, .container-main, .container2 {
+    background: var(--secondary-bg);
+    border: 1px solid rgba(255, 71, 87, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.container::before, .container-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+}
+
+/* СКРЫТЫЕ КОНТЕЙНЕРЫ - изначально не видны */
+.container3, .container4, .container5 {
+    background: var(--secondary-bg);
+    border: 1px solid rgba(255, 71, 87, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    display: none; /* Принудительно скрываем */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Специфичные стили для скрытых контейнеров */
+.container3, .container4, .container5 {
+    border: 3px solid var(--accent-color);
+    box-shadow: 0px 0px 5px 5px rgba(255, 71, 87, 0.3);
+}
+
+.cool_text {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #ffffff, #ffb8c2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+/* Списки */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-primary);
+}
+
+li::before {
+    content: '▸';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Формы */
+input, select {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 71, 87, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1);
+    transform: translateY(-2px);
+}
+
+/* МОДАЛЬНЫЕ ОКНА - изначально скрыты */
+.BIG_shadow {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: none !important; /* Принудительно скрываем */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+}
+
+.logWindow, .regWindow, .exitwindow {
+    background: var(--secondary-bg);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: none !important; /* Принудительно скрываем */
+    position: fixed;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+/* Позиционирование модальных окон */
+.logWindow {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 300px;
+}
+
+.regWindow {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 650px;
+    width: 300px;
+}
+
+.exitwindow {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    width: 300px;
+}
+
+/* Класс для показа модальных окон */
+.logWindow.active, 
+.regWindow.active, 
+.exitwindow.active,
+.BIG_shadow.active {
+    display: flex !important;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modal {
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-size: 1.8rem;
+}
+
+/* Футер */
+footer {
+    background: var(--secondary-bg);
+    border-top: 1px solid rgba(255, 71, 87, 0.2);
+    margin-top: 4rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ссылки */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+a:hover {
+    color: #ffb8c2;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Цветовые индикаторы */
+#color1, #color2, #color3 {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .header_buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cool_text {
+        font-size: 2rem;
+    }
+    
+    .container, .container-main, .container2 {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    input, select {
+        max-width: 100%;
+    }
+    
+    .logWindow, .regWindow, .exitwindow {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+/* Специфические улучшения для элементов */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ff4757' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 45px;
+}
+
+/* Стили для сообщений */
+#log_massage, #reg_massage, #FinalMassage {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Интерактивные состояния */
+button:active {
+    transform: translateY(0);
+}
+
+input[type="color"] {
+    height: 60px;
+    width: 60px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+/* Дополнительные классы для управления видимостью */
+.show {
+    display: flex !important;
+}
+
+.hide {
+    display: none !important;
+}

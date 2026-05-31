@@ -1,0 +1,236 @@
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 0, 0);
+    margin: 0px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(99, 98, 98);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255);
+    height: auto;
+    box-shadow: 0px 0px 10px 10px red;
+   
+
+}
+.header_buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    margin: 20px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    border: 2px solid rgb(255, 0, 0);
+    border-radius: 10%;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-main{
+    box-shadow: 0px 0px 5px 5px;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid;
+    display: flex;
+    justify-content: center;
+    border-radius: 10%;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.container{
+    box-shadow: 0px 0px 5px 5px;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid;
+    display: flex;
+    justify-content: center;
+    border-radius: 10%;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.container2{
+    box-shadow: 0px 0px 5px 5px;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+.cool_text{
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+}
+footer{
+    box-shadow: 0px 0px 5px 5px;
+    background-color: rgb(68, 68, 68);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:13%; /* Заменил 100px на 13%, чтобы футер прилегал к низу страницы */
+    border: 2px solid;
+    height: 50px;
+    color: #ff0000;
+}
+select{ /* Добавил стили для выпадающего списка, взяв их у input*/
+    height: 30px;
+    width: 400px;
+    margin:20px ;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+a{
+    color: #ed3838;
+    text-decoration: none;
+}
+a:hover{
+    color: aqua;
+    cursor:grab;
+}
+.container3{
+    box-shadow: 0px 0px 5px 5px red;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid red;
+    border-radius: 10%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    color: #ffffff;
+}
+.container4{
+    box-shadow: 0px 0px 5px 5px red;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid red;
+    border-radius: 10%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    color: #ffffff;
+}
+.container5{
+    box-shadow: 0px 0px 5px 5px red;
+    background-color: rgb(45, 43, 43);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80%;
+    height: 500px;
+    border: 3px solid red;
+    border-radius: 10%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    color: #ffffff;
+}
+input{
+    height: 30px;
+    width: 400px;
+    margin:20px ;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+input:focus{
+    border: 3px solid red;
+    box-shadow: 0px 0px 5px 3px red;
+}
+
+.BIG_shadow{
+    display: none;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.logWindow{
+    background-color: rgb(47, 46, 46);
+    border-radius: 5%;
+    box-shadow: 0px 0px 10px 4px red;
+    z-index: 6;
+    position: fixed;
+    top: 150px;
+    left: 40vw;
+    height: 400px;
+    width: 300px;
+    display: none;
+    pointer-events: auto;
+}
+.regWindow{
+    background-color: rgb(47, 46, 46);
+    border-radius: 5%;
+    box-shadow: 0px 0px 10px 4px red;
+    z-index: 6;
+    position: fixed;
+    top: 50px;
+    left: 40vw;
+    height: 650px;
+    width: 300px;
+    display: none;
+    pointer-events: auto;
+}
+.modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+    margin-top: 10%;
+}
+.modal input{
+    width: 200px;
+    margin: 10px;
+
+}
+.exitwindow{
+    background-color: rgb(47, 46, 46);
+    border-radius: 5%;
+    box-shadow: 0px 0px 10px 4px rgb(255, 0, 0);
+    z-index: 6;
+    position: fixed;
+    top: 150px;
+    left: 40vw;
+    height: 250px;
+    width: 300px;
+    display: none;
+    pointer-events: auto;
+}
+button:hover{
+    cursor: pointer;
+    background: #2a0505;
+}
+
